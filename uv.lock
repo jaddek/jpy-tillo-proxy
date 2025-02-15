@@ -267,7 +267,7 @@ wheels = [
 ]
 
 [[package]]
-name = "jpy-tillo-saas"
+name = "jpy-tillo-proxy"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
@@ -279,20 +279,16 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.8" },
-    { name = "jpy-tillo-sdk", specifier = ">=0.2.0" },
+    { name = "jpy-tillo-sdk", git = "https://github.com/jaddek/jpy-tillo-sdk.git?branch=dev" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
 ]
 
 [[package]]
 name = "jpy-tillo-sdk"
-version = "0.2.0"
-source = { registry = "https://pypi.org/simple" }
+version = "0.2.1"
+source = { git = "https://github.com/jaddek/jpy-tillo-sdk.git?branch=dev#4895c16ff23f548c66cbcc68852f5fad1d478bee" }
 dependencies = [
     { name = "httpx", extra = ["http2"] },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/21/3f/51d760fc34edbb1def6199cdc21a8e421512ef498c6af7ff3a8483913578/jpy_tillo_sdk-0.2.0.tar.gz", hash = "sha256:7a7bb02c212fbd03ce2d5feac756688345b47a361caae873259be218e15b44ad", size = 38067 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ea/c0/53e463a207bd657330a176f7c327dc52f51d91f04fda8d0ec2dab235b345/jpy_tillo_sdk-0.2.0-py3-none-any.whl", hash = "sha256:e60e18cec5e834c6db332162c74c85385500b0aaf91cdc749b8f3903735d9def", size = 20049 },
 ]
 
 [[package]]

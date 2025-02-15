@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "fastapi[standard]>=0.115.8",
-    "jpy-tillo-sdk>=0.2.0",
+    "jpy-tillo-sdk",
     "python-dotenv>=1.0.1",
 ]
+
+[tool.uv.sources]
+jpy-tillo-sdk = { git = "https://github.com/jaddek/jpy-tillo-sdk.git", branch = "dev" }

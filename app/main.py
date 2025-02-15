@@ -2,9 +2,8 @@ import logging
 import sys
 
 from dotenv import load_dotenv
-from starlette.responses import StreamingResponse
 
-from app.tillo.services import get_brands, get_brand_templates, get_brand_template, read_brand_template
+from .routers import brands, floats
 
 load_dotenv(override=False)
 
@@ -21,21 +20,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
-@app.get("/tillo/brands")
-def read_root():
-    return get_brands().json()
+app.include_router(brands.router)
+app.include_router(floats.router)
 
 
-@app.get("/tillo/brand/{brand}/templates")
-def read_root(brand: str):
-    return get_brand_templates(brand).json()
-
-
-@app.get("/tillo/brand/{brand}/templates/{template}")
-async def read_root(brand: str, template: str):
-    response = get_brand_template(brand, template)
-
-    return StreamingResponse(read_brand_template(response), media_type="application/zip", headers={
-        "Content-Disposition": "attachment; filename=my_archive.zip"
-    })
+@app.get("/")
+async def root():
+    return {"message": "Tillo Proxy"}
