@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/card/digital", tags=["Digital Card", "Card"])
+router = APIRouter(prefix="/card/digital", tags=["Digital Card"])
 
 
 @router.post('/issue')

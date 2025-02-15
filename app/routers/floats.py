@@ -6,7 +6,7 @@ from app.tillo.services import get_float_by_currency, get_floats
 router = APIRouter(prefix="/floats", tags=["Floats"])
 
 
-@router.get("/")
+@router.get("")
 async def floats():
     response = await get_floats()
 

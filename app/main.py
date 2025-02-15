@@ -3,7 +3,7 @@ import sys
 
 from dotenv import load_dotenv
 
-from .routers import brands, floats
+from .routers import brands, floats, digital_cards, physical_cards
 
 load_dotenv(override=False)
 
@@ -22,6 +22,8 @@ app = FastAPI()
 
 app.include_router(brands.router)
 app.include_router(floats.router)
+app.include_router(digital_cards.router)
+app.include_router(physical_cards.router)
 
 
 @app.get("/")
