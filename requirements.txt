@@ -62,7 +62,9 @@ mdurl==0.1.2
 packaging==24.2
     # via gunicorn
 pydantic==2.10.6
-    # via fastapi
+    # via
+    #   jpy-tillo-proxy (pyproject.toml)
+    #   fastapi
 pydantic-core==2.27.2
     # via pydantic
 pygments==2.19.1

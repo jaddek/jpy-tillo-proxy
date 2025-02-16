@@ -6,14 +6,10 @@ from dotenv import load_dotenv
 
 load_dotenv(override=False)
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+logging.basicConfig(level=logging.INFO, format=log_format)
+logger = logging.getLogger("Proxy")
 
-stream_handler = logging.StreamHandler(sys.stdout)
-log_formatter = logging.Formatter(
-    "%(asctime)s [%(processName)s: %(process)d] [%(threadName)s: %(thread)d] [%(levelname)s] %(name)s: %(message)s")
-stream_handler.setFormatter(log_formatter)
-logger.addHandler(stream_handler)
 
 from fastapi import FastAPI
 
