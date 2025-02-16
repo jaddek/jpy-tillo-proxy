@@ -1,0 +1,16 @@
+services:
+  fastapi:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    driver: bridge
+
+

@@ -1,9 +1,8 @@
 import logging
 import sys
 
+from app.routers import brands, floats, digital_cards, physical_cards
 from dotenv import load_dotenv
-
-from .routers import brands, floats, digital_cards, physical_cards
 
 load_dotenv(override=False)
 
@@ -28,4 +27,5 @@ app.include_router(physical_cards.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Tillo Proxy"}
+    return {"message": "Hello, Tillo"}
+

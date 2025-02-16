@@ -6,9 +6,17 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "fastapi[standard]>=0.115.8",
+    "gunicorn>=23.0.0",
     "jpy-tillo-sdk",
     "python-dotenv>=1.0.1",
+    "uvicorn>=0.34.0",
 ]
 
 [tool.uv.sources]
 jpy-tillo-sdk = { git = "https://github.com/jaddek/jpy-tillo-sdk.git", branch = "dev" }
+
+#[tool.uv]
+#dev-dependencies = [
+#    "ruff>=0.6.2",
+#    "fastapi-cli>=0.0.5",
+#]

@@ -1,0 +1,7 @@
+services:
+  fastapi:
+    command: gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
+    environment:
+      - ENV=prod
+      - LOG_LEVEL=info
+      - UVICORN_WORKERS=4

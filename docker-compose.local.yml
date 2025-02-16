@@ -1,0 +1,9 @@
+services:
+  fastapi:
+    command: [ "python", "server.py" ]
+    environment:
+      - ENV=dev
+      - UVICORN_WORKERS=1
+      - LOG_LEVEL=debug
+    volumes:
+      - .:/app

@@ -5,7 +5,6 @@ from app.tillo.services import get_brands, get_brand_templates, get_brand_templa
 
 router = APIRouter(prefix="/brands", tags=["Brands"])
 
-
 @router.get("/tillo/brands")
 async def brands():
     response = await get_brands()
