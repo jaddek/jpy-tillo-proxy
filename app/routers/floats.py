@@ -2,7 +2,7 @@ from typing import Annotated
 
 from app.domain.floats.body_requests import TransferRequestBody
 from jpy_tillo_sdk.enums import Currency
-from fastapi import APIRouter, Query, Path, Body
+from fastapi import APIRouter, Path, Body
 from app.tillo.services import get_float_by_currency, get_floats
 
 router = APIRouter(prefix="/floats", tags=["Floats"])
@@ -16,7 +16,7 @@ async def floats():
 
 
 @router.get("/{currency}")
-async def floats(
+async def balance(
         currency: Annotated[
             Currency,
             Path(

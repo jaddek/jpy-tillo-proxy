@@ -1,5 +1,4 @@
 import logging
-import sys
 
 from app.routers import brands, floats, digital_cards, physical_cards
 from dotenv import load_dotenv
@@ -10,8 +9,7 @@ log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.INFO, format=log_format)
 logger = logging.getLogger("Proxy")
 
-
-from fastapi import FastAPI
+from fastapi import FastAPI # noqa
 
 app = FastAPI()
 

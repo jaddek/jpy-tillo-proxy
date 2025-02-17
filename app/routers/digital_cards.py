@@ -19,7 +19,7 @@ async def cancel_by_url():
 
 
 @router.post('/cancel/code')
-async def cancel_by_url():
+async def cancel_by_code():
     return {"message": "Cancel by code"}
 
 

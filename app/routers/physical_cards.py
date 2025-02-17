@@ -14,7 +14,7 @@ async def deactivate():
 
 
 @router.post("/withdraw")
-async def activate():
+async def withdraw():
     return {"message": "Withdrawn"}
 
 
@@ -24,7 +24,7 @@ async def topUp():
 
 
 @router.post("/refund")
-async def activate():
+async def refind():
     return {"message": "Deactivated"}
 
 

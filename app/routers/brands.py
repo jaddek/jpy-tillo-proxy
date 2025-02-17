@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Annotated
 
-from app.domain.brand.query_filters import *
 from app.tillo.services import get_brands, get_brand_templates, get_brand_template, read_brand_template
+from app.domain.brand.query_filters import RouteBrandsParams
 from fastapi import APIRouter, Query, Path
 from starlette.responses import StreamingResponse
 
