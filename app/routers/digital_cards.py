@@ -4,6 +4,7 @@ from domain.digital_card.body_requests import IssueDigitalCardStandardBody, Issu
     IssueDigitalCardWithPersonalisationFulfilledByTilloBody, IssueReward, TopUpDigitalCodeBody, CancelDigitalUrlBody, \
     CancelDigitalCodeBody, ReverseDigitalCodeBody, BalanceCheckBody, OrderDigitalCodeAsyncBody
 from fastapi import APIRouter, Body, Path
+from ..domain.digital_card import services
 
 router = APIRouter(prefix="/card/digital", tags=["Digital Card"])
 
@@ -18,7 +19,9 @@ async def issue_digital_code(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.issue_digital_code(body)
+
+    return response.json()
 
 
 @router.post('/issue/digital_code_with_personalisation')
@@ -31,7 +34,9 @@ async def issue_digital_code_with_personalisation(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.issue_digital_code(body)
+
+    return response.json()
 
 
 @router.post('/issue/digital_code_fulfillment_by_tillo')
@@ -44,7 +49,9 @@ async def issue_digital_code_fulfillment_by_tillo(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.issue_digital_code(body)
+
+    return response.json()
 
 
 @router.post('/issue/reward')
@@ -57,11 +64,13 @@ async def issue_reward(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.issue_digital_code(body)
+
+    return response.json()
 
 
 @router.post('/top-up')
-async def topUp(
+async def top_up(
         body: Annotated[
             TopUpDigitalCodeBody,
             Body(
@@ -70,7 +79,9 @@ async def topUp(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.top_up(body)
+
+    return response.json()
 
 
 @router.post('/cancel/url')
@@ -83,7 +94,9 @@ async def cancel_by_url(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.cancel_by_url(body)
+
+    return response.json()
 
 
 @router.post('/cancel/code')
@@ -96,7 +109,9 @@ async def cancel_by_code(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.cancel_by_code(body)
+
+    return response.json()
 
 
 @router.get('/reverse')
@@ -109,7 +124,9 @@ async def reverse(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.reverse(body)
+
+    return response.json()
 
 
 @router.get('/stock/{brand}')
@@ -123,7 +140,9 @@ async def stock(
             )
         ],
 ):
-    return {"message": brand}
+    response = await services.stock(brand)
+
+    return response.json()
 
 
 @router.post('/balance')
@@ -136,7 +155,9 @@ async def balance(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.balance(body)
+
+    return response.json()
 
 
 @router.post('/async/order')
@@ -149,7 +170,9 @@ async def order(
             )
         ]
 ):
-    return {"message": body}
+    response = await services.order(body)
+
+    return response.json()
 
 
 @router.get('/async/check/{reference}')
@@ -163,4 +186,6 @@ async def check(
             )
         ],
 ):
-    return {"message": reference}
+    response = await services.check(reference)
+
+    return response.json()

@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Annotated
 
-from app.tillo.services import get_brands, get_brand_templates, get_brand_template, read_brand_template
+from domain.brand.services import get_brands, get_brand_template_async, read_brand_template_async, get_brand_templates_async
 from app.domain.brand.query_filters import RouteBrandsParams
 from fastapi import APIRouter, Query, Path
 from starlette.responses import StreamingResponse
@@ -34,7 +34,7 @@ async def brand_templates(
             )
         ],
 ):
-    response = await get_brand_templates(brand)
+    response = await get_brand_templates_async(brand)
 
     return response.json()
 
@@ -59,9 +59,9 @@ async def brand_template(
             )
         ]
 ):
-    response = await get_brand_template(brand, template)
+    response = await get_brand_template_async(brand, template)
     date = datetime.now().strftime("%m-%d-%Y")
 
-    return StreamingResponse(read_brand_template(response), media_type="application/zip", headers={
+    return StreamingResponse(read_brand_template_async(response), media_type="application/zip", headers={
         "Content-Disposition": f"attachment; filename={brand}_template_{template}_{date}_archive.zip"
     })

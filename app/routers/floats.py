@@ -1,16 +1,16 @@
 from typing import Annotated
 
 from app.domain.floats.body_requests import TransferRequestBody
+from domain.floats.services import get_float_by_currency_async, get_floats_async
 from jpy_tillo_sdk.enums import Currency
 from fastapi import APIRouter, Path, Body
-from app.tillo.services import get_float_by_currency, get_floats
 
 router = APIRouter(prefix="/floats", tags=["Floats"])
 
 
 @router.get("")
 async def floats():
-    response = await get_floats()
+    response = await get_floats_async()
 
     return response.json()
 
@@ -24,7 +24,7 @@ async def balance(
                 description="Currency name, for example 'EUR'",
             )
         ]):
-    response = await get_float_by_currency(currency)
+    response = await get_float_by_currency_async(currency)
 
     return response.json()
 
