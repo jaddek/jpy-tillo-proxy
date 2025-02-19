@@ -14,6 +14,7 @@ class Personalisation(BaseModel):
     from_name: str
     message: str
     template: str
+    choice_link_theme: str
 
 
 class FulfillmentParameters(BaseModel):
@@ -81,6 +82,8 @@ class TopUpDigitalCodeBody(BaseModel):
     code: str
     pin: str
     sector: str
+    serial_number: str
+
 
 class CancelDigitalCodeBody(BaseModel):
     client_request_id: str
@@ -89,6 +92,7 @@ class CancelDigitalCodeBody(BaseModel):
     face_value: FaceValue
     code: str
     sector: str
+
 
 class CancelDigitalUrlBody(BaseModel):
     client_request_id: str
@@ -107,6 +111,7 @@ class ReverseDigitalCodeBody(BaseModel):
     sector: str
     tags: [str]
 
+
 class BalanceCheckBody(BaseModel):
     client_request_id: str
     brand: str
@@ -114,6 +119,7 @@ class BalanceCheckBody(BaseModel):
     code: str
     pin: str
     sector: str
+
 
 class OrderDigitalCodeAsyncBody(BaseModel):
     client_request_id: str
@@ -124,7 +130,6 @@ class OrderDigitalCodeAsyncBody(BaseModel):
     section: str
     personalisation: Personalisation
     fulfilment_parameters: FulfillmentParameters
-
 
 #
 # class ProformaInvoiceBody(BaseModel):
