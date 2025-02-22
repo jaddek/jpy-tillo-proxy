@@ -109,7 +109,7 @@ class ReverseDigitalCodeBody(BaseModel):
     brand: str
     face_value: FaceValue
     sector: str
-    tags: [str]
+    tags: list[str]
 
 
 class BalanceCheckBody(BaseModel):
