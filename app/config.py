@@ -4,14 +4,15 @@ from httpx import Timeout, Limits
 
 load_dotenv(override=False)
 
+APP_NAME = os.getenv("APP_NAME", "Proxy")
 TILLO_API_KEY = os.getenv("TILLO_API_KEY", "")
 TILLO_SECRET = os.getenv("TILLO_SECRET", "")
 
 TILLO_HTTP_CLIENT_OPTIONS = {
     "verify": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_VERIFY", True),
     "trust_env": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_TRUST_ENV", True),
-    "http1": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_HTTP1", True),
-    "http2": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_HTTP2", False),
+    "http1": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_HTTP1", False),
+    "http2": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_HTTP2", True),
     "timeout": Timeout(timeout=os.getenv("TILLO_HTTP_CLIENT_OPTIONS_TIMEOUT", 5.0)),
     "follow_redirects": os.getenv("TILLO_HTTP_CLIENT_OPTIONS_FOLLOW_REDIRECTS", False),
     "limits": Limits(
